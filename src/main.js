@@ -1,74 +1,93 @@
-//variables
-const xmlns = "http://www.w3.org/2000/svg";
-const xlinkns = "http://www.w3.org/1999/xlink";
+/* variables
+const xmlns = 'http://www.w3.org/2000/svg'
+const xlinkns = 'http://www.w3.org/1999/xlink'
+*/
 
-var createButton = document.getElementById("todo__create");
-var tasksList = document.getElementById("todo__items-container");
-var taskform = document.getElementById("new_task_form");
-var container = document.getElementById("todo__body");
-var taskInput = document.getElementById("todo__input");
+/* globals addEventListener */
 
-taskform.addEventListener("submit", function (e) {
-  e.preventDefault();
+const tasksList = document.getElementById('todo__items-container')
+const taskform = document.getElementById('new_task_form')
+const container = document.getElementById('todo__body')
+const taskInput = document.getElementById('todo__input')
+const todoDel = document.getElementById('todo__delete')
 
-  addItem(taskInput.value);
-
-  taskInput.value = "";
-});
+const imgU = 'https://www.svgrepo.com/show/42437/cross-remove-sign.svg'
+const taskCompleted = 'task-completed'
+const taskEmptyImage = document.createElement('div')
 
 const addItem = (itemText) => {
-  const newTaskItem = document.createElement("li");
-  newTaskItem.setAttribute("class", "task_item");
+  taskEmptyImage.remove()
 
-  const newCheckBtn = document.createElement("div");
-  newCheckBtn.setAttribute("class", "todo__toggle");
+  const newTaskItem = document.createElement('li')
+  newTaskItem.setAttribute('id', 'task_item')
 
-  const newTaskBio = document.createElement("div");
-  newTaskBio.setAttribute("class", "todo__text");
-  
-  const divDel = document.createElement("div");
-  divDel.setAttribute("class", "todo__delete");
-  
-  const svgDel = document.createElement("svg");
-  svgDel.setAttribute("viewBox", "0 0 150 150");
-  
-  const useDel = document.createElement("use");
-  useDel.setAttribute("xlink:href", "#icon-delete");
+  const newCheckBtn = document.createElement('div')
+  newCheckBtn.setAttribute('class', 'todo__toggle')
 
+  const newTaskBio = document.createElement('div')
+  newTaskBio.setAttribute('class', 'todo__text')
 
+  const divDel = document.createElement('div')
+  divDel.setAttribute('class', 'todo__delete')
+  divDel.setAttribute('id', 'todo__delete')
 
-  newTaskBio.innerText = itemText;
+  const imgDel = document.createElement('img')
+  imgDel.setAttribute('src', imgU)
 
-  tasksList.appendChild(newTaskItem);
+  newTaskBio.innerText = itemText
 
-  newTaskItem.appendChild(newCheckBtn);
-  newTaskItem.appendChild(newTaskBio);
-  newTaskItem.appendChild(divDel);
-  
-  divDel.appendChild(svgDel);
-  svgDel.appendChild(useDel);
-  
-  onTaskComplete(newCheckBtn);
-};
+  tasksList.appendChild(newTaskItem)
+  newTaskItem.appendChild(newCheckBtn)
 
-function onTaskComplete(btns) {
-  btns.addEventListener("click", function (e) {
-    var parent = e.toElement.parentElement;
-    parent.classList.add("task-completed");
-    setTimeout(() => {
-      parent.remove();
-    }, 400);
+  newTaskItem.appendChild(newTaskBio)
+  newTaskItem.appendChild(divDel)
 
-    if (tasksList.childNodes.length == 1) {
-      setTimeout(() => {
-        container.classList.add("task_list_empty");
-      }, 800);
-    }
-  });
+  divDel.appendChild(imgDel)
+
+  onTaskComplete(newCheckBtn)
 }
 
-addEventListener("load", () => {
-  addItem("Read the description please");
-  addItem("Solve the task");
-  addItem("Submit the solution");
-});
+function onTaskComplete (btns) {
+  btns.addEventListener('click', function (e) {
+    const parentli = e.target.parentNode
+
+    if (parentli.className === taskCompleted) {
+      parentli.setAttribute('class', '')
+    } else {
+      const parent = e.target.parentNode
+
+      parent.setAttribute('class', taskCompleted)
+    }
+
+    setTimeout(() => {
+    }, 200)
+
+    if (tasksList.childNodes.length === 2) {
+      taskEmptyImage.setAttribute('class', 'task_list_empty')
+      setTimeout(() => {
+        container.appendChild(taskEmptyImage)
+      }, 200)
+    }
+  })
+}
+
+addEventListener('load', () => {
+  addItem('Read the description please')
+  addItem('Solve the task')
+  addItem('Submit the solution')
+})
+
+taskform.addEventListener('submit', function (e) {
+  e.preventDefault()
+
+  addItem(taskInput.value)
+
+  taskInput.value = ''
+})
+
+taskform.addEventListener('keyup', (e) => {
+  if (e.code === 'Enter') {
+    addItem(taskInput.value)
+    taskInput.value = ''
+  }
+})

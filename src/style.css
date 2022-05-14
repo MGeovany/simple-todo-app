@@ -4,14 +4,20 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #3498db, #2b3d52);
+  background: linear-gradient(
+    to top,
+    #36d1dc,
+    #5b86e5
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #497081;
-
+  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-family: monospace;
 }
 
 svg.define {
@@ -24,14 +30,20 @@ svg {
   height: 100%;
 }
 
-.task_item{
+svg:hover {
+  fill: red;
+}
+
+#task_item {
   display: flex;
   flex-direction: row;
   padding-bottom: 1rem;
-
+  align-items: center;
 }
 
-button, input[type="submit"], input[type="reset"] {
+button,
+input[type="submit"],
+input[type="reset"] {
   background: none;
   color: inherit;
   border: none;
@@ -41,27 +53,42 @@ button, input[type="submit"], input[type="reset"] {
   outline: inherit;
 }
 
+.line {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  height: 1px;
+  background-color: gainsboro;
+  border-radius: 25px;
+}
+
 .todo {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  max-width: 500px;
+  min-width: 500px;
   box-shadow: 4px 8px 12px 0px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 
-  width: 80%;
+  margin-top: 2rem;
+  width: 500px;
 }
 
 .todo__header {
-  height: 100px;
+  height: 130px;
   display: flex;
   align-items: center;
 
   flex-direction: column;
 }
 
+.icon {
+  filter: invert(37%) sepia(91%) saturate(2507%) hue-rotate(133deg)
+    brightness(100%) contrast(92%);
+}
+
 .todo__menu {
-  background-color: #2b3d52;
+  background-color: #3faa7a;
   color: #e5e5e5;
   height: 65px;
   width: 100%;
@@ -71,7 +98,7 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 .todo__items-container {
-  padding: 4px 0;
+  padding: 15px 0;
   margin: 0 30px;
 
   display: flex;
@@ -81,13 +108,19 @@ button, input[type="submit"], input[type="reset"] {
 .todo__body {
   display: flex;
   flex-direction: column;
+  min-height: 315px;
 }
 
 .todo__item {
   display: flex;
-  margin: 25px 0;
   flex-direction: row;
-  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__menu {
+  height: 50px;
 }
 
 .todo__menu,
@@ -98,41 +131,43 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 .todo__date {
-  height: 100%;
+  height: 60%;
   flex-direction: column;
+
+  padding: 1rem 0 q1;
 }
 
 .todo__toggle {
-  height: 16px;
+  height: 15px;
   flex: 0 0 16px;
-  border: 1px solid #497081;
-  border-radius: 50%;
+  border: 2px solid rgb(182, 196, 199);
   cursor: pointer;
 }
 
-li{
-  list-style:none; 
+li {
+  list-style: none;
   height: 40px;
-
 }
 
 .todo__weekday {
-  font-weight: bold;
+  font-weight: bolder;
+  color: #444;
 
-  font-size: large;
+  font-size: 24px;
 }
-
-
 
 .todo__fulldate {
   font-size: 14px;
+  color: #868686;
 }
 
 .todo__text {
-  margin-left: 5px;
-  font-size: 15px;
+  margin-left: 1rem;
+  font-size: 18px;
   width: 90%;
   word-wrap: break-word;
+
+  font-weight: bold;
 }
 
 .todo__delete {
@@ -151,15 +186,59 @@ li{
   border-top: 1px solid #d4dce0;
 }
 
-.todo__create, .todo__delete {
+.todo__create,
+.todo__delete {
   height: 20px;
   flex: 0 0 20px;
   margin: 0 10px;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo__delete > img {
+  width: 12px;
+  height: 12px;
+
+  filter: invert(47%) sepia(49%) saturate(4805%) hue-rotate(329deg)
+    brightness(106%) contrast(88%);
 }
 
 .todo__input {
   width: 100%;
   border: 2px solid #2b3d52;
   border-radius: 5px;
+  font-size: 14px;
+
+  font-style: italic;
+  color: #333;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  color: rgb(150, 150, 150);
+  font-style: italic;
+}
+
+.task-deleted {
+  transition: 0.5s;
+  transform: scale(90%);
+  text-decoration: line-through;
+  color: rgb(150, 150, 150);
+  opacity: 0;
+}
+
+.task_list_empty {
+  transition: 2s;
+  width: 100%;
+  height: 100%;
+
+  margin-bottom: 30px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("https://blush.design/api/download?shareUri=AcCBYxBdA8bY-7W9&c=Hair_0%7E4d33a2_Rainbow_0%7Effa648_Skin_0%7Eef9e89&w=800&h=800&fm=png");
 }

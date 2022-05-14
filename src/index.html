@@ -1,84 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body class="main">
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="define">
-      <defs>
-        <symbol id="icon-plus">
-          <title>plus</title>
-          <path
-            d="M31 12h-11v-11c0-0.552-0.448-1-1-1h-6c-0.552 0-1 0.448-1 1v11h-11c-0.552 0-1 0.448-1 1v6c0 0.552 0.448 1 1 1h11v11c0 0.552 0.448 1 1 1h6c0.552 0 1-0.448 1-1v-11h11c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1z"
-          ></path>
-        </symbol>
-        <symbol id="icon-checkmark">
-          <title>checkmark</title>
-          <path
-            d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-          ></path>
-        </symbol>
-        <symbol id="icon-delete">
-          <title>delete</title>
-          <path
-            d="M 76.8 0 c -42.4 0 -76.8 34.4 -76.8 76.8 s 34.4 76.8 76.8 76.8 s 76.8 -34.4 76.8 -76.8 s -34.4 -76.8 -76.8 -76.8 z M 76.8 139.2 c -34.5 0 -62.4 -27.9 -62.4 -62.4 s 27.9 -62.4 62.4 -62.4 s 62.4 27.9 62.4 62.4 s -27.9 62.4 -62.4 62.4 z"
-          ></path>
-          <path
-            d="M 100.8 38.4 l -24 24 l -24 -24 l -14.4 14.4 l 24 24 l -24 24 l 14.4 14.4 l 24 -24 l 24 24 l 14.4 -14.4 l -24 -24 l 24 -24 z"
-          ></path>
-        </symbol>
-      </defs>
-    </svg>
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <title>simple-todo-app</title>
+</head>
 
-    <div class="todo">
-      <div class="todo__header">
-        <div class="todo__menu">
-          <div class="todo__title">ToDo List</div>
-        </div>
-        <div class="todo__date">
-          <div class="todo__weekday">Monday</div>
-          <div class="todo__fulldate">December 6, 2021</div>
-        </div>
+<body class="main">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="define">
+    <defs>
+      <symbol id="icon-plus">
+        <title>plus</title>
+        <path
+          d="M31 12h-11v-11c0-0.552-0.448-1-1-1h-6c-0.552 0-1 0.448-1 1v11h-11c-0.552 0-1 0.448-1 1v6c0 0.552 0.448 1 1 1h11v11c0 0.552 0.448 1 1 1h6c0.552 0 1-0.448 1-1v-11h11c0.552 0 1-0.448 1-1v-6c0-0.552-0.448-1-1-1z">
+        </path>
+      </symbol>
+      <symbol id="icon-checkmark">
+        <title>checkmark</title>
+        <path
+          d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z">
+        </path>
+      </symbol>
+      <symbol id="icon-delete">
+        <title>delete</title>
+        <path
+          d="M 76.8 0 c -42.4 0 -76.8 34.4 -76.8 76.8 s 34.4 76.8 76.8 76.8 s 76.8 -34.4 76.8 -76.8 s -34.4 -76.8 -76.8 -76.8 z M 76.8 139.2 c -34.5 0 -62.4 -27.9 -62.4 -62.4 s 27.9 -62.4 62.4 -62.4 s 62.4 27.9 62.4 62.4 s -27.9 62.4 -62.4 62.4 z">
+        </path>
+        <path
+          d="M 100.8 38.4 l -24 24 l -24 -24 l -14.4 14.4 l 24 24 l -24 24 l 14.4 14.4 l 24 -24 l 24 24 l 14.4 -14.4 l -24 -24 l 24 -24 z">
+        </path>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <div class="todo">
+    <div class="todo__header">
+      <div class="todo__menu">
+        <div class="todo__title">ToDo List</div>
+      </div>
+      <div class="todo__date">
+        <div class="todo__weekday">Monday</div>
+        <div class="todo__fulldate">December 6, 2021</div>
+      </div>
+      <div class="line"></div>
+    </div>
+    
+    <form id="new_task_form">
+      <div class="todo__body" id="todo__body">
+
+        <ul class="todo__items-container" id="todo__items-container">
+         
+
       </div>
 
-      <form id="new_task_form">
-        <div class="todo__body" id="todo__body">
+      <div class="todo__add">
+        <textarea type="text" class="todo__input" id="todo__input" placeholder="What should I do..."></textarea>
 
-          <ul class="todo__items-container" id="todo__items-container">
-            <li class="task_item">
-              <div class="todo__toggle"></div>
-              <div class="todo__text">Practice more Vanilla JS</div>
-              <div class="todo__delete" id="todo__delete">
-                <svg viewBox="0 0 150 150" class="icon">
-                  <use xlink:href="#icon-delete"></use>
-                </svg>
-              </div>
-            </li>
-
+        <div class="todo__create" id="todo__create">
+          <button type="submit" id="sub__button">
+            <svg viewBox="0 0 32 32" class="icon">
+              <use xlink:href="#icon-plus"></use>
+            </svg>
+          </button>
         </div>
 
-        <div class="todo__add">
-          <textarea
-            type="text"
-            class="todo__input"
-            id="todo__input"
-            placeholder="What should I do..."
-          >
-          </textarea>
-          
-          <div class="todo__create" id="todo__create">
-            <button type="submit">
-              <svg viewBox="0 0 32 32" class="icon">
-                <use xlink:href="#icon-plus"></use>
-              </svg>
-            </button>
-          </div>
-        
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
+  </div>
 
-    <script type="text/javascript" src="main.js"></script>
-  </body>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
 </html>
