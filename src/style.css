@@ -14,9 +14,7 @@ body {
   background-attachment: fixed;
   color: #333;
   display: flex;
-  align-items: center;
   justify-content: center;
-
   font-family: monospace;
 }
 
@@ -39,6 +37,7 @@ svg:hover {
   flex-direction: row;
   padding-bottom: 1rem;
   align-items: center;
+  height: 100%;
 }
 
 button,
@@ -66,19 +65,17 @@ input[type="reset"] {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  min-width: 500px;
+  min-width: 400px;
   box-shadow: 4px 8px 12px 0px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
-
   margin-top: 2rem;
-  width: 500px;
+  width: 400px;
 }
 
 .todo__header {
   height: 130px;
   display: flex;
   align-items: center;
-
   flex-direction: column;
 }
 
@@ -102,7 +99,7 @@ input[type="reset"] {
   margin: 0 30px;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .todo__body {
@@ -133,15 +130,28 @@ input[type="reset"] {
 .todo__date {
   height: 60%;
   flex-direction: column;
-
   padding: 1rem 0 q1;
 }
 
 .todo__toggle {
-  height: 15px;
-  flex: 0 0 16px;
-  border: 2px solid rgb(182, 196, 199);
+  height: 18px;
+  flex: 0 0 18px;
+  border: 0.149rem solid rgb(145, 221, 176);
   cursor: pointer;
+  border-radius: 5px;
+}
+.todo__toggle__completed {
+  background-image: url("https://img.icons8.com/metro/26/000000/checked-2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 20px;
+  width: 15px;
+  flex: 0 0 20px;
+  cursor: pointer;
+
+  filter: invert(66%) sepia(18%) saturate(217%) hue-rotate(179deg)
+    brightness(95%) contrast(92%);
 }
 
 li {
@@ -152,7 +162,6 @@ li {
 .todo__weekday {
   font-weight: bolder;
   color: #444;
-
   font-size: 24px;
 }
 
@@ -166,7 +175,6 @@ li {
   font-size: 18px;
   width: 90%;
   word-wrap: break-word;
-
   font-weight: bold;
 }
 
@@ -192,16 +200,18 @@ li {
   flex: 0 0 20px;
   margin: 0 10px;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.todo__delete > img {
+.todo__delete {
   width: 12px;
   height: 12px;
 
+  background-image: url("https://www.svgrepo.com/show/42437/cross-remove-sign.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
   filter: invert(47%) sepia(49%) saturate(4805%) hue-rotate(329deg)
     brightness(106%) contrast(88%);
 }
@@ -211,7 +221,6 @@ li {
   border: 2px solid #2b3d52;
   border-radius: 5px;
   font-size: 14px;
-
   font-style: italic;
   color: #333;
 }
@@ -223,8 +232,6 @@ li {
 }
 
 .task-deleted {
-  transition: 0.5s;
-  transform: scale(90%);
   text-decoration: line-through;
   color: rgb(150, 150, 150);
   opacity: 0;
@@ -232,11 +239,8 @@ li {
 
 .task_list_empty {
   transition: 2s;
-  width: 100%;
-  height: 100%;
-
+  height: 250px;
   margin-bottom: 30px;
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

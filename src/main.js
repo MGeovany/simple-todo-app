@@ -1,19 +1,13 @@
-/* variables
-const xmlns = 'http://www.w3.org/2000/svg'
-const xlinkns = 'http://www.w3.org/1999/xlink'
-*/
-
 /* globals addEventListener */
 
 const tasksList = document.getElementById('todo__items-container')
 const taskform = document.getElementById('new_task_form')
 const container = document.getElementById('todo__body')
 const taskInput = document.getElementById('todo__input')
-const todoDel = document.getElementById('todo__delete')
 
-const imgU = 'https://www.svgrepo.com/show/42437/cross-remove-sign.svg'
-const taskCompleted = 'task-completed'
 const taskEmptyImage = document.createElement('div')
+
+const taskCompleted = 'task-completed'
 
 const addItem = (itemText) => {
   taskEmptyImage.remove()
@@ -31,9 +25,6 @@ const addItem = (itemText) => {
   divDel.setAttribute('class', 'todo__delete')
   divDel.setAttribute('id', 'todo__delete')
 
-  const imgDel = document.createElement('img')
-  imgDel.setAttribute('src', imgU)
-
   newTaskBio.innerText = itemText
 
   tasksList.appendChild(newTaskItem)
@@ -42,9 +33,24 @@ const addItem = (itemText) => {
   newTaskItem.appendChild(newTaskBio)
   newTaskItem.appendChild(divDel)
 
-  divDel.appendChild(imgDel)
-
   onTaskComplete(newCheckBtn)
+  onTaskDelete(divDel)
+}
+
+function onTaskDelete (btns) {
+  btns.addEventListener('click', (e) => {
+    const parentlis = e.target.parentNode
+    parentlis.setAttribute('class', 'task-deleted')
+
+    parentlis.remove(btns)
+
+    if (tasksList.childNodes.length === 1) {
+      taskEmptyImage.setAttribute('class', 'task_list_empty')
+      container.appendChild(taskEmptyImage)
+      setTimeout(() => {
+      }, 200)
+    }
+  })
 }
 
 function onTaskComplete (btns) {
@@ -53,20 +59,12 @@ function onTaskComplete (btns) {
 
     if (parentli.className === taskCompleted) {
       parentli.setAttribute('class', '')
+      btns.setAttribute('class', 'todo__toggle')
     } else {
       const parent = e.target.parentNode
 
+      btns.setAttribute('class', 'todo__toggle__completed')
       parent.setAttribute('class', taskCompleted)
-    }
-
-    setTimeout(() => {
-    }, 200)
-
-    if (tasksList.childNodes.length === 2) {
-      taskEmptyImage.setAttribute('class', 'task_list_empty')
-      setTimeout(() => {
-        container.appendChild(taskEmptyImage)
-      }, 200)
     }
   })
 }
@@ -75,19 +73,27 @@ addEventListener('load', () => {
   addItem('Read the description please')
   addItem('Solve the task')
   addItem('Submit the solution')
+
+  const date = new Date()
+  const options = { year: 'numeric', month: 'long', day: 'numeric' }
+  const optionsDay = { weekday: 'long' }
+
+  document.getElementById('day').innerHTML = date.toLocaleDateString(undefined, optionsDay)
+  document.getElementById('date').innerHTML = date.toLocaleDateString(undefined, options)
 })
 
 taskform.addEventListener('submit', function (e) {
   e.preventDefault()
 
-  addItem(taskInput.value)
-
+  if (taskInput.value !== '') { addItem(taskInput.value) }
   taskInput.value = ''
 })
 
 taskform.addEventListener('keyup', (e) => {
+  e.preventDefault()
+
   if (e.code === 'Enter') {
-    addItem(taskInput.value)
+    if (taskInput.value !== '') { addItem(taskInput.value) }
     taskInput.value = ''
   }
 })
