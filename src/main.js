@@ -72,7 +72,9 @@ function onTaskComplete (btns) {
 addEventListener('load', () => {
   addItem('Read the description please')
   addItem('Solve the task')
-  addItem('Submit the solution')
+  addItem('Read the description')
+  addItem('Remember to sleep well')
+  addItem('Created by mgeovany')
 
   const date = new Date()
   const options = { year: 'numeric', month: 'long', day: 'numeric' }
